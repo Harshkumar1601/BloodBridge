@@ -1,0 +1,42 @@
+{
+  "name": "bdbms-backend",
+  "version": "1.0.0",
+  "description": "Blood Donation & Blood Bank Management System - Backend API",
+  "main": "dist/app.js",
+  "scripts": {
+    "dev": "nodemon --watch src --ext ts --exec npx tsx src/app.ts",
+    "build": "tsc",
+    "start": "node dist/app.js",
+    "db:init": "npx tsx src/db/init.ts",
+    "db:seed": "npx tsx src/db/seed.ts",
+    "db:reset": "npx tsx src/db/reset.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/better-sqlite3": "^9.6.0",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/morgan": "^1.9.10",
+    "@types/node": "^26.6.4",
+    "@types/uuid": "^10.0.0",
+    "nodemon": "^3.1.14",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "better-sqlite3": "^13.0.3",
+    "cors": "^2.8.6",
+    "dotenv": "^18.0.6",
+    "express": "^5.2.1",
+    "helmet": "^8.3.0",
+    "jsonwebtoken": "^9.0.3",
+    "morgan": "^1.12.1",
+    "uuid": "^14.0.2",
+    "zod": "^4.6.5"
+  }
+}

@@ -1,0 +1,888 @@
+Build a Complete Blood Donation & Blood Bank Management System
+You are an expert full-stack software engineer and UI/UX designer. Build a fully functional, modern, responsive web application named:
+Blood Donation & Blood Bank Management System (BDBMS)
+This is a college Software Project Management (SPM) Innovative Assignment. The application must be sufficiently functional to be demonstrated live to faculty during final evaluation.
+The goal is NOT to create only static screens. Implement real working workflows, database persistence, validation, authentication, dashboards, CRUD operations, search/filtering, status changes, reports, and realistic sample data.
+------------------------------------------------------------------------------------
+1. PROJECT OBJECTIVE
+Develop a centralized Blood Donation & Blood Bank Management System that manages:
+Blood donors
+Donor registration and profiles
+Blood donation appointments
+Blood inventory
+Hospitals
+Blood requests
+Laboratory/testing information
+Notifications
+Reports
+Administrator dashboard
+Authentication and role-based access
+The application should simulate a realistic blood-bank management workflow.
+------------------------------------------------------------------------------------
+
+2. TECHNOLOGY
+Use a modern full-stack architecture.
+Preferred stack:
+Frontend: React + TypeScript
+Build tool: Vite
+Styling: Tailwind CSS
+UI components: modern reusable component architecture
+Icons: Lucide React
+Charts: Recharts
+Backend: Node.js + Express
+Database: PostgreSQL
+If PostgreSQL setup would make the project difficult to run locally, use SQLite with a clean database abstraction so the application can run immediately.
+Use REST APIs between frontend and backend.
+Organize the project cleanly:
+/frontend
+/backend
+/database
+/docs
+Use environment variables for configuration.
+Provide:
+README.md
+installation instructions
+database setup instructions
+sample credentials
+API documentation
+project structure explanation
+The application must run locally with a simple command such as:
+npm install
+npm run dev
+------------------------------------------------------------------------------------
+
+3. USER ROLES
+Implement role-based authentication.
+Roles:
+Administrator
+Blood Bank Staff
+Hospital
+Donor
+Each role should see an appropriate dashboard.
+
+Administrator:
+Full system access
+Manage users
+Manage donors
+Manage hospitals
+Manage inventory
+Manage blood requests
+View reports
+Manage laboratory records
+View notifications
+View system statistics
+
+Blood Bank Staff:
+Donor management
+Appointments
+Inventory
+Blood requests
+Laboratory records
+Notifications
+Reports
+
+Hospital:
+View available blood inventory
+Create blood requests
+Track request status
+View request history
+
+Donor:
+View profile
+Update profile
+Book donation appointment
+View appointment status/history
+View notifications
+------------------------------------------------------------------------------------
+
+4. AUTHENTICATION MODULE
+Create a professional login system.
+Features:
+Login
+Logout
+Registration
+Role selection where appropriate
+Password validation
+Password hashing
+Session/token-based authentication
+Protected routes
+Role-based route protection
+Invalid login error
+Session expiration/logout
+Form validation
+
+Create demo accounts:
+Admin:
+[admin@bdbms.com](mailto:admin@bdbms.com)
+Password: Admin@123
+
+Staff:
+[staff@bdbms.com](mailto:staff@bdbms.com)
+Password: Staff@123
+
+Hospital:
+[hospital@bdbms.com](mailto:hospital@bdbms.com)
+Password: Hospital@123
+
+Donor:
+[donor@bdbms.com](mailto:donor@bdbms.com)
+Password: Donor@123
+Clearly mention these credentials in README.
+------------------------------------------------------------------------------------
+
+5. ADMIN DASHBOARD
+Create a visually impressive dashboard suitable for faculty demonstration.
+Display:
+Total donors
+Active donors
+Total hospitals
+Pending blood requests
+Available blood units
+Low-stock blood groups
+Today's appointments
+Completed donations
+Pending laboratory tests
+Recent blood requests
+Recent donations
+Recent notifications
+Use cards, tables, charts and graphs.
+
+Charts:
+Blood inventory by blood group
+Monthly donations
+Blood requests by month
+Request status distribution
+Donor registration trend
+Use realistic data.
+The dashboard must update dynamically when records are added or modified.
+------------------------------------------------------------------------------------
+
+6. DONOR MANAGEMENT MODULE
+Create complete donor CRUD functionality.
+Donor fields:
+Donor ID
+Full Name
+Date of Birth
+Gender
+Blood Group
+Phone
+Email
+Address
+City
+Emergency Contact
+Last Donation Date
+Total Donations
+Eligibility Status
+Registration Date
+Account Status
+
+Features:
+Add donor
+Edit donor
+Delete/deactivate donor
+View donor
+Search donor
+Filter by blood group
+Filter by city
+Filter by eligibility
+Sort donors
+View donation history
+Add validation.
+Important validations:
+Required fields
+Valid email
+Valid phone number
+Valid date
+Minimum age for donation
+Donation eligibility
+Duplicate donor prevention
+Create a detailed donor profile page.
+------------------------------------------------------------------------------------
+
+7. APPOINTMENT MODULE
+Implement donation appointment management.
+Features:
+Book appointment
+Select donor
+Select date
+Select time
+Select blood bank/location
+Appointment status
+Reschedule appointment
+Cancel appointment
+Complete appointment
+View appointment history
+
+Statuses:
+Scheduled
+Confirmed
+Completed
+Cancelled
+No Show
+Prevent invalid/duplicate appointments.
+Create calendar-style or timeline-style appointment visualization.
+------------------------------------------------------------------------------------
+
+8. BLOOD INVENTORY MODULE
+This is one of the most important modules.
+Manage blood stock for:
+A+
+A-
+B+
+B-
+AB+
+AB-
+O+
+O-
+For each blood group display:
+Available units
+Reserved units
+Expired units
+Minimum stock threshold
+Last updated date
+Features:
+Add blood units
+Update stock
+Remove/issue blood units
+Reserve blood units
+Track expired units
+Search/filter blood groups
+Low-stock alerts
+Inventory transaction history
+Every inventory change should create an inventory transaction.
+
+Transaction types:
+Donation
+Blood issue
+Reservation
+Expiry
+Adjustment
+Create an attractive blood-stock visualization.
+Use color indicators:
+Normal stock
+Low stock
+Critical stock
+Out of stock
+Do not hard-code the dashboard values. Calculate them from the database.
+------------------------------------------------------------------------------------
+
+9. HOSPITAL MANAGEMENT MODULE
+Create hospital management.
+Hospital fields:
+Hospital ID
+Hospital Name
+Registration Number
+Contact Person
+Phone
+Email
+Address
+City
+Emergency Contact
+Status
+
+Features:
+Add hospital
+Edit hospital
+View hospital
+Activate/deactivate hospital
+Search hospitals
+Filter hospitals
+------------------------------------------------------------------------------------
+
+10. BLOOD REQUEST MODULE
+Hospitals should be able to create blood requests.
+Request fields:
+Request ID
+Hospital
+Blood Group
+Quantity
+Required Date
+Urgency
+Patient Reference
+Reason
+Request Date
+Status
+Approved By
+Remarks
+
+Urgency:
+Normal
+Urgent
+Emergency
+
+Status:
+Pending
+Approved
+Partially Fulfilled
+Fulfilled
+Rejected
+Cancelled
+
+Workflow:
+Hospital creates request
+↓
+Blood bank receives request
+↓
+Staff reviews availability
+↓
+Admin/Staff approves or rejects
+↓
+Inventory is reserved/reduced
+↓
+Request becomes fulfilled
+↓
+Hospital receives notification
+Implement proper validation so a request cannot be fulfilled if sufficient compatible blood is unavailable.
+------------------------------------------------------------------------------------
+
+11. BLOOD COMPATIBILITY
+Implement basic blood-group compatibility logic.
+For example:
+O- can donate to all blood groups.
+AB+ can receive from all blood groups.
+Create a compatibility utility/service instead of hard-coding compatibility logic inside UI components.
+Show compatible donor blood groups when processing a blood request.
+Display a clear compatibility table in the application.
+------------------------------------------------------------------------------------
+
+12. LABORATORY MODULE
+Create a laboratory/testing module for donated blood.
+For every donation/test record maintain:
+Test ID
+Donation ID
+Donor
+Blood Group
+HIV Test
+Hepatitis B Test
+Hepatitis C Test
+Syphilis Test
+Malaria Test
+Blood Type Verification
+Test Date
+Technician
+Overall Result
+Remarks
+Possible test result:
+Pending
+Passed
+Failed
+Only blood units whose laboratory result is "Passed" should become available in usable inventory.
+This should be demonstrated in the workflow.
+
+Example:
+Donation completed
+→ Laboratory test created
+→ Test passed
+→ Blood unit added to inventory
+If the test fails:
+Donation
+→ Laboratory failed
+→ Blood unit marked unusable
+→ Inventory should NOT increase
+------------------------------------------------------------------------------------
+
+13. NOTIFICATION MODULE
+Implement notifications.
+Generate notifications for:
+New blood request
+Request approved
+Request rejected
+Low blood stock
+Appointment confirmation
+Appointment cancellation
+Laboratory result available
+Blood request fulfilled
+System alerts
+
+Display:
+Notification icon
+Unread count
+Notification list
+Mark as read
+Mark all as read
+------------------------------------------------------------------------------------
+
+14. REPORTS MODULE
+Create a professional reports section.
+Reports:
+Blood Inventory Report
+Donor Report
+Donation Report
+Blood Request Report
+Hospital Report
+Laboratory Report
+Appointment Report
+Monthly Blood Collection Report
+
+Allow:
+Date filtering
+Blood group filtering
+Status filtering
+Search
+Export to CSV
+Print report
+Create charts for important reports.
+------------------------------------------------------------------------------------
+
+15. ADMIN USER MANAGEMENT
+Administrator should be able to:
+View users
+Add users
+Edit users
+Activate/deactivate users
+Assign roles
+Reset passwords
+Search/filter users
+Display role badges.
+------------------------------------------------------------------------------------
+
+16. DATABASE DESIGN
+Create normalized database tables such as:
+users
+roles
+donors
+hospitals
+appointments
+donations
+blood_inventory
+inventory_transactions
+blood_requests
+laboratory_tests
+notifications
+audit_logs
+
+Create appropriate:
+Primary keys
+Foreign keys
+Unique constraints
+Indexes
+Created/updated timestamps
+Status fields
+Maintain referential integrity.
+------------------------------------------------------------------------------------
+
+17. AUDIT LOG
+Implement an audit-log mechanism.
+Track important operations:
+Login
+Logout
+Donor created
+Donor updated
+Appointment created
+Inventory changed
+Blood request approved
+Blood request rejected
+Laboratory result updated
+User status changed
+Display audit logs to administrators.
+------------------------------------------------------------------------------------
+
+18. SEARCH, FILTER AND PAGINATION
+All major data tables should support:
+Search
+Filtering
+Sorting
+Pagination
+Use reusable components where possible.
+------------------------------------------------------------------------------------
+
+19. VALIDATION AND ERROR HANDLING
+Implement proper validation on both frontend and backend.
+Show user-friendly error messages.
+Examples:
+Invalid email
+Invalid phone
+Required field missing
+Duplicate record
+Insufficient inventory
+Invalid blood group
+Invalid appointment date
+Unauthorized operation
+Invalid login
+Expired session
+Never expose raw database errors to users.
+------------------------------------------------------------------------------------
+
+20. UI/UX REQUIREMENTS
+Create a professional healthcare-style interface.
+Requirements:
+Responsive design
+Desktop-first but mobile compatible
+Sidebar navigation
+Top navigation bar
+Dashboard cards
+Data tables
+Modal forms
+Confirmation dialogs
+Toast notifications
+Loading states
+Empty states
+Error states
+Status badges
+Breadcrumbs
+Use a clean medical/healthcare visual style.
+Do NOT make the UI look like a basic student CRUD project.
+Use consistent spacing, typography, icons and components.
+------------------------------------------------------------------------------------
+
+21. DASHBOARD SIDEBAR
+Create navigation:
+Dashboard
+Donors
+All Donors
+Add Donor
+Donation History
+Appointments
+Blood Inventory
+Stock
+Transactions
+Hospitals
+Blood Requests
+Laboratory
+Notifications
+Reports
+Users
+Audit Logs
+Settings
+Logout
+Show/hide navigation according to user role.
+------------------------------------------------------------------------------------
+
+22. SAMPLE DATA
+Seed the database with realistic demo data.
+Include at least:
+20 donors
+5 hospitals
+15 appointments
+8 blood requests
+Blood inventory for all 8 blood groups
+15 laboratory records
+20 notifications
+Multiple users
+Inventory transactions
+Audit logs
+The application must look populated immediately after installation.
+------------------------------------------------------------------------------------
+
+23. IMPORTANT DEMO WORKFLOW
+The application MUST support this complete end-to-end demonstration:
+Workflow A — Donor Registration
+Login as Admin/Staff
+→ Add donor
+→ Enter donor information
+→ Save donor
+→ Donor appears in donor list
+→ Open donor profile
+Workflow B — Appointment
+Login as Donor/Staff
+→ Book donation appointment
+→ Select date/time
+→ Confirm appointment
+→ Appointment appears in appointment list
+Workflow C — Donation + Laboratory
+Staff opens appointment
+→ Mark appointment as completed
+→ Create donation
+→ Laboratory test is generated
+→ Enter test results
+→ Mark test as Passed
+→ Blood becomes eligible for inventory
+Workflow D — Inventory
+Open Blood Inventory
+→ Show updated blood group stock
+→ Show inventory transaction
+→ Demonstrate low-stock alert
+Workflow E — Hospital Blood Request
+Login as Hospital
+→ Create blood request
+→ Select blood group
+→ Enter quantity
+→ Select urgency
+→ Submit
+Login as Staff/Admin
+→ View pending request
+→ Check inventory
+→ Approve request
+→ Reserve/issue blood
+→ Request status changes
+→ Inventory decreases
+→ Hospital receives notification
+Workflow F — Reports
+Open Reports
+→ Select date range
+→ Generate report
+→ View statistics/chart
+→ Export CSV
+→ Print report
+------------------------------------------------------------------------------------
+
+24. SPM-ORIENTED FEATURES
+Because this is an SPM Innovative Assignment, include a small section called:
+Project Management
+Display:
+Project progress
+Milestones
+Task status
+Defect statistics
+Project metrics
+Risk summary
+Create a simple project monitoring dashboard with:
+Overall project progress
+Completed modules
+Pending modules
+Open defects
+Resolved defects
+Defect density
+Schedule status
+Risk status
+Use the following project baseline:
+Project duration: 16 weeks
+Team size: 4 developers
+Estimated effort: 24 person-months
+Estimated project size: 6 KLOC
+Development model: Agile
+Modules: 10
+Use these metrics as PROJECT BASELINE / DEMONSTRATION DATA and clearly label them as such.
+Do not falsely represent estimated academic metrics as automatically collected production metrics.
+------------------------------------------------------------------------------------
+
+25. DEFECT TRACKING DASHBOARD
+Create a project-quality dashboard containing:
+Total defects
+Open defects
+Resolved defects
+Critical defects
+High-severity defects
+Medium-severity defects
+Low-severity defects
+Defect resolution rate
+Defect density
+Defect Removal Efficiency
+Use the following academic demonstration baseline:
+Pre-delivery defects: 42
+Post-delivery defects: 5
+KLOC: 6
+DRE:
+DRE = Pre-delivery defects /
+(Pre-delivery defects + Post-delivery defects)
+× 100
+Defect density:
+Defect Density = Total defects / KLOC
+Display these metrics clearly as SPM academic/project baseline metrics.
+------------------------------------------------------------------------------------
+
+26. PROJECT STATUS DASHBOARD
+Create a project status page with:
+Overall Progress: 87%
+Requirements: 95%
+Design: 100%
+Database: 100%
+Development: 90%
+Integration: 85%
+Testing: 80%
+Documentation: 85%
+Effort consumed: 22 person-months
+Estimated effort: 24 person-months
+Completed modules: 8/10
+These values should be clearly labeled as demonstration/project monitoring data.
+Create charts showing project progress.
+------------------------------------------------------------------------------------
+
+27. MILESTONE TRACKING
+Create a milestone tracking section.
+Milestones:
+Requirements Analysis — Weeks 1–2
+System Design — Weeks 3–4
+Database Design — Weeks 4–5
+Core Development — Weeks 6–9
+Module Integration — Weeks 9–10
+System Testing — Weeks 10–11
+Security Testing — Week 12
+UAT — Week 13
+Deployment — Week 14
+Training & Handover — Week 15
+Project Closure — Week 16
+Display:
+Milestone
+Planned date/week
+Actual/expected date
+Status
+Completion percentage
+Use statuses:
+Completed
+In Progress
+Delayed
+Upcoming
+Create a visual milestone/timeline chart.
+------------------------------------------------------------------------------------
+
+28. SECURITY
+Implement basic application security:
+Password hashing
+Authentication middleware
+Authorization middleware
+Protected API routes
+Input validation
+SQL injection prevention
+XSS-safe rendering
+Secure session/token handling
+No passwords stored in plain text
+No secrets hard-coded in source code
+------------------------------------------------------------------------------------
+
+29. RESPONSIVE DESIGN
+The application must work properly on:
+Desktop
+Laptop
+Tablet
+Mobile
+Ensure tables can scroll horizontally on smaller screens.
+------------------------------------------------------------------------------------
+
+30. DEMO MODE
+Add a convenient "Demo Data Reset" capability available only to the Administrator.
+It should allow resetting the database to the predefined demonstration state.
+Before resetting, show a confirmation dialog.
+------------------------------------------------------------------------------------
+
+31. FACULTY DEMONSTRATION MODE
+Add a small "Demo Guide" section accessible to administrators.
+It should show recommended demonstration steps:
+Login
+Dashboard
+Add donor
+Book appointment
+Complete donation
+Perform laboratory test
+Update inventory
+Create hospital blood request
+Approve request
+Show inventory deduction
+Show notification
+Generate report
+Show project monitoring dashboard
+Show defect dashboard
+This will help us demonstrate the application within approximately 10–15 minutes.
+------------------------------------------------------------------------------------
+
+32. ERROR-FREE EXPERIENCE
+Before considering the project complete:
+Test every major workflow
+Fix broken routes
+Fix API errors
+Fix database errors
+Fix form validation
+Fix authentication
+Fix role permissions
+Fix responsive layout
+Ensure no console errors
+Ensure no broken buttons
+Ensure all CRUD operations work
+Ensure database persistence works
+Ensure charts receive real data
+Ensure logout works
+Ensure refresh does not break authenticated pages
+Do not leave placeholder buttons such as "Coming Soon" for major modules.
+------------------------------------------------------------------------------------
+
+33. CODE QUALITY
+Use:
+Reusable components
+Clean folder structure
+Meaningful variable/function names
+Separation of frontend/backend logic
+API service layer
+Database service/repository layer
+Authentication middleware
+Validation middleware
+Error handling middleware
+Avoid putting everything in one file.
+Comment only where useful.
+------------------------------------------------------------------------------------
+
+34. README
+Generate a detailed README containing:
+Project title
+Project description
+Features
+Technology stack
+Architecture
+Database schema
+Installation steps
+Environment variables
+Database setup
+Seed data
+Demo credentials
+How to run frontend
+How to run backend
+API overview
+User roles
+Major workflows
+Testing instructions
+SPM project metrics
+Known assumptions
+Future enhancements
+------------------------------------------------------------------------------------
+
+35. FINAL ACCEPTANCE CRITERIA
+Do not consider the project complete until all of the following work:
+[ ] Login works
+[ ] Role-based access works
+[ ] Admin dashboard works
+[ ] Donor CRUD works
+[ ] Appointment management works
+[ ] Donation workflow works
+[ ] Laboratory workflow works
+[ ] Blood inventory works
+[ ] Hospital management works
+[ ] Blood request workflow works
+[ ] Blood compatibility works
+[ ] Notifications work
+[ ] Reports work
+[ ] CSV export works
+[ ] User management works
+[ ] Audit logs work
+[ ] Project monitoring dashboard works
+[ ] Defect tracking dashboard works
+[ ] Search/filter/pagination works
+[ ] Form validation works
+[ ] Database persistence works
+[ ] Responsive UI works
+[ ] Demo data is available
+[ ] README is complete
+[ ] No major console errors
+[ ] No major broken functionality
+------------------------------------------------------------------------------------
+
+36. DEVELOPMENT PRIORITY
+If you cannot implement everything simultaneously, prioritize in this exact order:
+Priority 1:
+Authentication + Admin Dashboard
+Priority 2:
+Donor Management
+Priority 3:
+Appointments + Donations
+Priority 4:
+Laboratory
+Priority 5:
+Blood Inventory
+Priority 6:
+Hospitals + Blood Requests
+Priority 7:
+Notifications
+Priority 8:
+Reports
+Priority 9:
+User Management + Audit Logs
+Priority 10:
+SPM Project Monitoring + Defect Dashboard
+The application must always remain runnable while development progresses.
+------------------------------------------------------------------------------------
+
+37. FINAL INSTRUCTION
+Build the actual application now.
+Do not only describe the solution.
+Create the complete project structure, source code, database schema, API endpoints, frontend pages, reusable components, authentication, seed data and documentation.
+Run/test the application and fix errors before declaring it complete.
+The final result should look like a realistic professional Blood Bank Management System that a student team can demonstrate to faculty as a working Software Project Management Innovative Assignment.
+The system should be visually polished, functional, database-driven and easy to demonstrate live.
